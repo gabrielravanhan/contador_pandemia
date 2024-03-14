@@ -18,6 +18,14 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  void decrement() {
+    // Code
+  }
+
+  void increment() {
+    // Code
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +54,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: null,
+                  onPressed: decrement,
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.red,
                     fixedSize: const Size(100, 100),
@@ -66,7 +74,7 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(width: 32),
               TextButton(
-                  onPressed: null,
+                  onPressed: increment,
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.red,
                     fixedSize: const Size(100, 100),
