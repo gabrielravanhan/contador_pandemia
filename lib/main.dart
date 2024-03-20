@@ -10,26 +10,42 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomePage()
-    );
+        debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
+
   void decrement() {
-    // Code
+    setState(() {
+      count--;
+    });
+    print(count);
   }
 
   void increment() {
-    // Code
+    setState(() {
+      count++;
+    });
+    print(count);
   }
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     return Scaffold(
-      body: Column(
+        body: Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/background.png'))),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
@@ -41,12 +57,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          const Text(
-            '0',
+          Text(
+            '$count',
             style: TextStyle(
               fontSize: 100,
               color: Colors.black,
-
             ),
           ),
           const SizedBox(height: 40),
@@ -54,48 +69,46 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: decrement,
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    fixedSize: const Size(100, 100),
-                    foregroundColor: Colors.black,
-                    shape:
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                onPressed: decrement,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  fixedSize: const Size(100, 100),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
                   ),
-                  child: const Text(
-                      'Saiu',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
+                ),
+                child: const Text(
+                  'Saiu',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
+                ),
               ),
               const SizedBox(width: 32),
               TextButton(
-                  onPressed: increment,
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    fixedSize: const Size(100, 100),
-                    foregroundColor: Colors.black,
-                    shape:
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                onPressed: increment,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  fixedSize: const Size(100, 100),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
                   ),
-                  child: const Text(
-                      'Entrou',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
+                ),
+                child: const Text(
+                  'Entrou',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
+                ),
               ),
             ],
           ),
         ],
       ),
-    );
+    ));
   }
 }
